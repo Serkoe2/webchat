@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <link rel="stylesheet" href="{% static 'style/registration.css'%}">
+</head>
+<body style="background-image: url('{% static "img/back.jpg" %}') ;">
+    <div class="container">
+        <div class="logo">
+            WebChat
+            <img src="{% static 'img/logo.jpg' %}" alt="">
+        </div>
+        <div class="auth">
+            <p>{{ message }}</p>
+            <form action="/webchat/reg/" method="POST" onsubmit="check()">
+                {% csrf_token %}
+                <input type="text" class="fields"  name="login" placeholder="login" required >
+                <input type="password" class="fields" name="password" placeholder="password" required >
+                <input type="hidden">
+                <input type="password" class="fields" name="repeat" placeholder="repeat password" required>
+                <input type="submit" class="fields submit" value="Registration">
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        function check(){
+            let reg_data = document.querySelectorAll('.fields')
+            if (reg_data[1].value != reg_data[2].value){
+                document.querySelector('.auth').querySelector('p').innerText = 'Пароли не совпадают'
+                console.log(reg_data)
+                event.preventDefault()
+            }
+        }
+    </script>
+</body>
+</html>

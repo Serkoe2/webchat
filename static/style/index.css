@@ -1,0 +1,42 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container{
+    width : 50vw;
+    height: 50vh;
+}
+.logo{
+    text-align: center;
+}
+.logo img{
+    width: 1rem;
+    height: 1rem;
+}
+.fields{
+    margin-top:1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 0.5rem;
+}
+.submit{
+    margin-left: 0.1rem;
+    background-color:lightgray;
+}
+.auth form{
+    border:1px solid black;
+    padding : 10px;
+    display: flex;
+    flex-direction: column;
+}
+body{
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-position: center;
+}

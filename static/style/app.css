@@ -1,0 +1,70 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container{
+    width : 60vw;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.find{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.fields{
+    width: 50vw;
+    padding-top: 1rem;
+    padding-bottom: 1em;
+}
+.submit{
+    padding: 0.8rem;
+}
+
+.chat{
+    width: 7rem;
+    height: 7rem;
+    border: 1px solid black;
+    border-radius: 50%;
+}
+
+.last{
+    padding-top: 2rem;
+    width: 40vw;
+}
+.line{
+    margin-bottom: 1.5rem;
+}
+.first{
+    display: flex;
+    justify-content: center;
+}
+.second{
+    display: flex;
+    justify-content: space-between;
+}
+.third{
+    display: flex;
+    justify-content: space-around;
+}
+
+
+.get_chat{
+    text-decoration: none;
+    color: black;
+    display: block;
+    text-align: center;
+    border: 1px solid black;
+    padding-top: 1rem;
+    padding-bottom: 1em;
+}

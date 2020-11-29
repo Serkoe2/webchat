@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'style/app.css'%}">
+</head>
+<body>
+    
+    <div class="container">
+        
+
+        <div class="find">
+            <h1>Привет {{ name }}</h1>
+            <div class="wrapper_find">
+                <input type="text" class="fields submit-input" required>
+                <button class="submit">Find</button>
+            </div>
+        </div>
+
+       <div class="chats">
+        <h1>Чаты</h1>
+        {% for i in chats %}
+        <p>{{i}}</p>
+        {% endfor %}
+       </div>
+        {% csrf_token %}
+    </div>
+
+    
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="{% static 'js/app.js'%}""></script>
+</body>
+</html>

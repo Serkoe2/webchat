@@ -1,0 +1,27 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'style/chat_border.css'%}">
+    <link rel="stylesheet" href="{% static 'style/chat.css' %}">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container gradient-border" id="box">
+        <div class="window_chat">
+
+        </div>
+
+        <div class="window_message">
+            <textarea cols=50 rows=4></textarea>
+            <input class="send" type="button" value="Send">
+        </div>
+    </div>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="{% static 'js/chat.js' %}"></script>
+    {% csrf_token %}
+</body>
+
+</html>
