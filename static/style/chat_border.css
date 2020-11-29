@@ -2,7 +2,7 @@
   color: white;
 }
 .gradient-border {
-  --borderWidth: 3px;
+  --borderWidth: 5px;
   background: white;
   position: relative;
   border-radius: var(--borderWidth);

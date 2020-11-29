@@ -21,9 +21,12 @@
         </div>
 
        <div class="chats">
+
         <h1>Чаты</h1>
         {% for i in chats %}
-        <p>{{i}}</p>
+        <div class="wrapper_find">  
+            <a href="/webchat/{{i}}" class="get_chat">{{i}}</a> 
+        </div>
         {% endfor %}
        </div>
         {% csrf_token %}
@@ -32,5 +35,6 @@
     
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script src="{% static 'js/app.js'%}""></script>
+   
 </body>
 </html>
