@@ -40,12 +40,12 @@ def authUser(data):
     #установка сессии
         if check[0].check_ban():
                 return(False , 'ban')
-
         key = str(secrets.token_hex())
-        check.update(session_key = key)
-        return ('True' , key)
+        check[0].session_key = key
+        check[0].save()
+        return (True , key)
     else:
-        return ('False' , "Неправильный пароль")
+        return (False , "Неправильный пароль")
     
 def check_session(key):
     # Есть ли такая сессия

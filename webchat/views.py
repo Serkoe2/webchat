@@ -1,5 +1,5 @@
 from django.shortcuts import render  , redirect
-from django.http import HttpResponse
+from django.http import HttpResponse , HttpResponseRedirect
 
 import json
 from . import dbwork
@@ -19,21 +19,27 @@ def index(request):
             elif result[1] == 'ban':
                 return render(request , 'ban.html')
 
-        return render(request , 'index.html')
+        else:
+            return render(request , 'index.html')
 
-    if request.method == 'POST':
+    elif request.method == 'POST':
         data = {}
         data['login'] = request.POST.get('login')
         data['password'] = request.POST.get('password')
+    
         status = dbwork.user.authUser(data)
         if not status[0]:
+            
             if status[1] == 'ban':
                 return render(request , 'ban.html')
             else:
                 return render(request , 'index.html', { 'message' : status[1]})
         else:
+            #response = HttpResponseRedirect('/webchat/main/')
+            #response.set_cookie('site' , status[1])
             request.session['site'] = status[1]
-            return redirect('main/')
+            return redirect('main/')   
+
 
 def reg(request):
 
@@ -53,7 +59,9 @@ def reg(request):
     return render(request , 'registration.html')
 
 def main(request):
+    print("------------------------")
     key = request.session.get('site')
+    print(key)
     #нет ключа
     if not key:
         return redirect('/webchat/')
@@ -103,6 +111,8 @@ def chat(request , id):
 
             return HttpResponse(json.dumps(login[1]))
     
-    
+def logout(request):
+        request.session['site'] = ''
+        return redirect('/webchat')  
 
     
