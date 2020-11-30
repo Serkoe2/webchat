@@ -23,7 +23,7 @@ def regUser(data):
     user.save()
 
     return (True , key)
-    
+
 #авторизация
 def authUser(data):
     user = db.User()
@@ -35,9 +35,12 @@ def authUser(data):
     if not check:
         return (False , "Пользователь не существует")
     
-    #проверка пароля
+    #проверка пароля и бана
     if check[0].check_passwd(data['password']):  
     #установка сессии
+        if check[0].check_ban():
+                return(False , 'ban')
+
         key = str(secrets.token_hex())
         check.update(session_key = key)
         return ('True' , key)
@@ -48,9 +51,11 @@ def check_session(key):
     # Есть ли такая сессия
     user = db.User.objects.filter(session_key = key)
     if user:
+        if user[0].check_ban():
+            return(False , 'ban')
         return (True , user[0].login)
     else:
-        return (False , 'Нет активной сессии')
+        return (False , 'not found')
     
 def find_user(login):
     check = db.User.objects.filter(login = login)

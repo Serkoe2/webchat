@@ -9,10 +9,16 @@ def index(request):
     if request.method == 'GET':
 
         key = request.session.get('site')
-        if key and dbwork.user.check_session(key):
-            #отправляем в личный кабинет
-            return redirect('main/')
-                
+        if key:
+            result = dbwork.user.check_session(key)
+            if result[0]:
+                #отправляем в личный кабинет
+                return redirect('main/')
+            elif result[1] == 'not found':
+                return render(request , 'index.html')
+            elif result[1] == 'ban':
+                return render(request , 'ban.html')
+
         return render(request , 'index.html')
 
     if request.method == 'POST':
@@ -21,7 +27,10 @@ def index(request):
         data['password'] = request.POST.get('password')
         status = dbwork.user.authUser(data)
         if not status[0]:
-            return render(request , 'index.html', { 'message' : status[1]})
+            if status[1] == 'ban':
+                return render(request , 'ban.html')
+            else:
+                return render(request , 'index.html', { 'message' : status[1]})
         else:
             request.session['site'] = status[1]
             return redirect('main/')

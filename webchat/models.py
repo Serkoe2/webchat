@@ -7,7 +7,8 @@ class User(models.Model):
     password = models.CharField(max_length=20)
     time_create = models.DateTimeField(auto_now_add=True)
     time_update = models.DateTimeField(auto_now=True)
-    session_key = models.CharField(max_length=128) 
+    session_key = models.CharField(max_length=128)
+    _ban = models.BooleanField(default=False)
 
     def add_session(self):
         key = str(secrets.token_hex())
@@ -19,6 +20,11 @@ class User(models.Model):
             return True
         else:
             return False
+
+    def check_ban(self):
+        if self._ban:
+            return True
+        return False
 
     def __str__(self):
         return self.login
