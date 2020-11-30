@@ -21,3 +21,16 @@ DATABASES = {
         'PORT' : '5432',
     }
 }
+
+
+sudo nano /etc/nginx/sites-available/default
+sudo nano /var/log/nginx/error.log
+sudo nano ~/webchat/logs/debug.txt
+
+sudo supervisorctl restart webchat
+sudo systemctl restart nginx
+
+app_user Qwerty
+
+
+a3d31
