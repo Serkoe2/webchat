@@ -1,0 +1,5 @@
+gunicorn
+django
+libpq-dev
+psycopg2
+dj-database-url
